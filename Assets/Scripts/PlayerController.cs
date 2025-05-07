@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Animator animator;
     private CharacterController controller;
-    private Vector2 moveInput;
+    private Vector2 moveInput = Vector2.zero;
     private float verticalVelocity;
     private bool isJumping;
 
@@ -23,9 +23,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-
-        if (context.canceled)
+        if (context.performed || context.started)
+        {
+            moveInput = context.ReadValue<Vector2>();
+        }
+        else if (context.canceled)
         {
             moveInput = Vector2.zero;
         }
