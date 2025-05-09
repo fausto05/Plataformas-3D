@@ -58,6 +58,5 @@ public class PlayerController : MonoBehaviour
 
         float speed = move.magnitude;
         animator.SetFloat("Speed", speed);
-        Debug.Log("Speed: " + speed);
     }
 }
